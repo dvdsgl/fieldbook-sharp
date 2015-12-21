@@ -52,6 +52,24 @@ namespace FieldBook
             return record;
         }
 
+		// Fielbook doesn't support bools yet so we convert them to string
+		class BoolToStringConverted : JsonConverter
+		{
+			public override void WriteJson (JsonWriter writer, object value, JsonSerializer serializer)
+			{
+				var asString = (bool)value ? "true" : "false";
+				var token = Newtonsoft.Json.Linq.JToken.FromObject(asString);
+				token.WriteTo(writer);
+			}
+
+			public override object ReadJson (JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+			{
+				throw new NotImplementedException ();
+			}
+
+			public override bool CanConvert (Type objectType) => objectType == typeof(bool);
+		}
+
         class PropertyNamesContractResolver : CamelCasePropertyNamesContractResolver
         {
             bool seenId = false;
@@ -77,6 +95,14 @@ namespace FieldBook
 
                 return props.ToList();
             }
+
+			protected override JsonConverter ResolveContractConverter(Type objectType)
+			{
+				if (objectType == typeof(bool))
+					return new BoolToStringConverted ();
+				
+				return base.ResolveContractConverter (objectType);
+			}
         }
 
         string ToJson(object record) => JsonConvert.SerializeObject(record, new JsonSerializerSettings
