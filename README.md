@@ -4,7 +4,7 @@
 
 Visit [fieldbook.com](http://fieldbook.com) to create a free account and make your first book with a `Tasks` sheet:
 
-![](sheet.png}
+![](sheet.png)
 
 ### Step 2: Add `fieldbook-sharp` NuGet to your app
 
