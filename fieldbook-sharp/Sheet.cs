@@ -1,6 +1,6 @@
 using System;
-using System.Linq;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -10,13 +10,6 @@ using Newtonsoft.Json.Serialization;
 namespace FieldBook
 {
     using Newtonsoft.Json;
-
-    public class SyntheticAttribute : Attribute { }
-
-    public interface IRow
-    {
-        int Id { get; set; }
-    }
 
     public class Sheet<T> where T : IRow
     {
