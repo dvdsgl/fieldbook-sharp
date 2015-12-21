@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>fieldbook-sharp</id>
-    <version>0.0.3</version>
+    <version>0.0.5</version>
     <title>FieldBook Client</title>
     <authors>David Siegel</authors>
     <owners>David Siegel</owners>
@@ -15,8 +15,8 @@
     <releaseNotes>Early release.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <dependencies>
-        <dependency id="Microsoft.Net.Http" version="2.2.29" />
-        <dependency id="Newtonsoft.Json" version="7.0.1" />
+        <dependency id="Microsoft.Net.Http" version="2.2.0" />
+        <dependency id="Newtonsoft.Json" version="7.0.0" />
     </dependencies>
   </metadata>
   <files>
