@@ -7,7 +7,7 @@
     <authors>David Siegel</authors>
     <owners>David Siegel</owners>
     <projectUrl>https://github.com/dvdsgl/fieldbook-sharp</projectUrl>
-    <licenseUrl>https://github.com/dvdsgl/fieldbook-sharp/License.md</licenseUrl>
+    <licenseUrl>https://github.com/dvdsgl/fieldbook-sharp/blob/master/License.md</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       FieldBook client library for .NET
