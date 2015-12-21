@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm *.nupkg
+xbuild /t:Clean

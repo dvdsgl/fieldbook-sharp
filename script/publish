@@ -1,0 +1,6 @@
+#!/bin/sh
+
+script/clean
+script/build
+
+nuget push fieldbook-sharp*.nupkg

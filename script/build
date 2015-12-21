@@ -1,0 +1,6 @@
+#!/bin/sh
+
+nuget restore
+xbuild
+
+nuget pack
