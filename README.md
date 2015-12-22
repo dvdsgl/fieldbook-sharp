@@ -38,9 +38,9 @@ var sheet = book.GetSheet<ToDo>();
 
 ```csharp
 // List all tasks
-List<ToDo> tasks = await sheet.List();
+List<ToDo> allToDos = await sheet.List();
 
-// Get task by Id
+// Get ToDo by Id
 ToDo toDo = await sheet.Get(0);
 
 // Change a ToDo
