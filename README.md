@@ -1,21 +1,20 @@
 # FieldBook Client for .NET
 
+First, add the `fieldbook-sharp` NuGet to your app.
+
 ### Step 1: Create a Book and a Sheet
 
-Visit [fieldbook.com](http://fieldbook.com) to create a free account and make your first book with a `Tasks` sheet:
+Visit [fieldbook.com](http://fieldbook.com) to create a free account and make your first book.
+Make a `ToDos` sheet that looks like this:
 
 ![](sheet.png)
 
-### Step 2: Add `fieldbook-sharp` NuGet to your app
-
-Enough said.
-
-### Step 3: Create a class for your sheet
+### Step 2: Create a class to represent ToDos
 
 ```csharp
 class ToDo : FieldBook.IRow
 {
-    // Required for IRow interface
+    // Required for IRow
     public int Id { get; set; }
     
     public string Name { get; set; }
@@ -25,16 +24,17 @@ class ToDo : FieldBook.IRow
 }
 ```
 
-### Step 4: Create your book and sheet objects
+### Step 3: Create your book and sheet objects
 
 Click `Manage API access` inside of FieldBook to get your book ID and create an API key.
+Then make a `Book`, and use the book to get a `Sheet<ToDo>`!
 
 ```csharp
 var book = new Book("book id", "api key name", "api key");
 var sheet = book.GetSheet<ToDo>();
 ```
 
-### Step 5: Query your sheet!
+### Step 4: Query your sheet!
 
 ```csharp
 // List all tasks
