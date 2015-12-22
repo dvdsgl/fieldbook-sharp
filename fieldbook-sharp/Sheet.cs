@@ -45,6 +45,8 @@ namespace FieldBook
             return all;
         }
 
+		public Task<T> this[int id] => Get(id);
+
         public async Task<T> Get(int id)
         {
             var json = await Client.GetStringAsync($"{Name}/{id}");
