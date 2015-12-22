@@ -27,7 +27,7 @@ class ToDo : FieldBook.IRow
 ### Step 3: Create your book and sheet objects
 
 Click `Manage API access` inside of FieldBook to get your book ID and create an API key.
-Then make a `Book`, and use the book to get a `Sheet<ToDo>`!
+Then make a `Book`, and use the book to get a strongly typed reference to the sheet:
 
 ```csharp
 var book = new Book("book id", "api key name", "api key");
