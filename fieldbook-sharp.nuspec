@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>fieldbook-sharp</id>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <title>FieldBook Client</title>
     <authors>David Siegel</authors>
     <owners>David Siegel</owners>
