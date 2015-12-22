@@ -18,20 +18,20 @@ namespace FieldBook
 
         internal Sheet(HttpClient client, string name = null)
         {
-			Name = name ?? InferredName;
+            Name = name ?? InferredName;
             Client = client;
         }
 
-		string InferredName
-		{
-			get
-			{
-				var name = typeof(T).Name.ToLower();
-				return name.EndsWith("y")
-					? $"{name.Substring(0, name.Length - 1)}ies"
-					: $"{name}s";
-			}
-		}
+        string InferredName
+        {
+            get
+            {
+                var name = typeof(T).Name.ToLower();
+                return name.EndsWith("y")
+                    ? $"{name.Substring(0, name.Length - 1)}ies"
+                    : $"{name}s";
+            }
+        }
 
         public async Task<List<T>> List(int offset, int limit)
         {
@@ -56,7 +56,7 @@ namespace FieldBook
             return all;
         }
 
-		public Task<T> this[int id] => Get(id);
+        public Task<T> this[int id] => Get(id);
 
         public async Task<T> Get(int id)
         {
@@ -65,23 +65,23 @@ namespace FieldBook
             return record;
         }
 
-		// Fielbook doesn't support bools yet so we convert them to string
-		class BoolToStringConverted : JsonConverter
-		{
-			public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-			{
-				var asString = (bool)value ? "true" : "false";
-				var token = Newtonsoft.Json.Linq.JToken.FromObject(asString);
-				token.WriteTo(writer);
-			}
+        // Fielbook doesn't support bools yet so we convert them to string
+        class BoolToStringConverted : JsonConverter
+        {
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                var asString = (bool)value ? "true" : "false";
+                var token = Newtonsoft.Json.Linq.JToken.FromObject(asString);
+                token.WriteTo(writer);
+            }
 
-			public override object ReadJson(JsonReader reader, Type typ, object existingValue, JsonSerializer serializer)
-			{
-				throw new NotImplementedException();
-			}
+            public override object ReadJson(JsonReader reader, Type typ, object existingValue, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
 
-			public override bool CanConvert(Type typ) => typ == typeof(bool);
-		}
+            public override bool CanConvert(Type typ) => typ == typeof(bool);
+        }
 
         class PropertyNamesContractResolver : CamelCasePropertyNamesContractResolver
         {
@@ -101,22 +101,22 @@ namespace FieldBook
                     seenId = true;
                 }
 
-				props = props.Select(prop =>
-				{
-					prop.PropertyName = prop.PropertyName.ToLower();
-					return prop;
-				});
+                props = props.Select(prop =>
+                {
+                    prop.PropertyName = prop.PropertyName.ToLower();
+                    return prop;
+                });
 
                 return props.ToList();
             }
 
-			protected override JsonConverter ResolveContractConverter(Type objectType)
-			{
-				if (objectType == typeof(bool))
-					return new BoolToStringConverted ();
-				
-				return base.ResolveContractConverter (objectType);
-			}
+            protected override JsonConverter ResolveContractConverter(Type objectType)
+            {
+                if (objectType == typeof(bool))
+                    return new BoolToStringConverted();
+
+                return base.ResolveContractConverter(objectType);
+            }
         }
 
         string ToJson(object record) => JsonConvert.SerializeObject(record, new JsonSerializerSettings
