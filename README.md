@@ -31,17 +31,17 @@ Click `Manage API access` inside of FieldBook to get your book ID and create an 
 
 ```csharp
 var book = new Book("book id", "api key name", "api key");
-var taskSheet = book.GetSheet<Task>();
+var sheet = book.GetSheet<Task>();
 ```
 
 ### Step 5: Query your sheet!
 
 ```csharp
 // List all tasks
-var allTasks = await taskSheet.List();
+List<Task> tasks = await sheet.List();
 
 // Get one task
-var firstTask = await taskSheet.Get(0);
+Task firstTask = await sheet.Get(0);
 
 // Change a task
 firstTask.Priority = 10;
