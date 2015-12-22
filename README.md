@@ -40,7 +40,7 @@ var sheet = book.GetSheet<Task>();
 // List all tasks
 List<Task> tasks = await sheet.List();
 
-// Get one task
+// Get task by Id
 Task firstTask = await sheet.Get(0);
 
 // Change a task
