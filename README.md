@@ -37,15 +37,24 @@ var sheet = book.GetSheet<ToDo>();
 ### Step 4: Use the sheet to query, create, update, and delete
 
 ```csharp
-// List all tasks
+// List all todos
 List<ToDo> allTodos = await sheet.List();
+
+// Or just list some
+var someTodos = await sheet.List(offset: 5, limit: 25);
 
 // Get todo by Id
 ToDo todo = await sheet.Get(0);
 
+// Or get a todo this hipster way via indexer
+var hipsterTodo = await sheet[42];
+
 // Change a todo
 todo.Priority = 10;
 await sheet.Update(todo);
+
+// Or update just some fields for more efficiency
+await sheet.Update(todo, new { Priority = todo.Priority });
 
 // Delete a todo
 await sheet.Delete(todo);
