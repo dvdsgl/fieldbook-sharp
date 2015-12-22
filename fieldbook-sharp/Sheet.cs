@@ -90,10 +90,11 @@ namespace FieldBook
                     seenId = true;
                 }
 
-                foreach (var prop in props)
-                {
-                    prop.PropertyName = prop.PropertyName.ToLower();
-                }
+				props = props.Select(prop =>
+				{
+					prop.PropertyName = prop.PropertyName.ToLower();
+					return prop;
+				});
 
                 return props.ToList();
             }
