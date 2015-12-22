@@ -13,7 +13,7 @@ Enough said.
 ### Step 3: Create a class for your sheet
 
 ```csharp
-class Task : FieldBook.IRow
+class ToDo : FieldBook.IRow
 {
     // Required for IRow interface
     public int Id { get; set; }
@@ -27,31 +27,31 @@ class Task : FieldBook.IRow
 
 ### Step 4: Create your book and sheet objects
 
-Click `Manage API access` inside of FieldBook to get your book ID and create an access key.
+Click `Manage API access` inside of FieldBook to get your book ID and create an API key.
 
 ```csharp
 var book = new Book("book id", "api key name", "api key");
-var sheet = book.GetSheet<Task>();
+var sheet = book.GetSheet<ToDo>();
 ```
 
 ### Step 5: Query your sheet!
 
 ```csharp
 // List all tasks
-List<Task> tasks = await sheet.List();
+List<ToDo> tasks = await sheet.List();
 
 // Get task by Id
-Task firstTask = await sheet.Get(0);
+ToDo toDo = await sheet.Get(0);
 
-// Change a task
-firstTask.Priority = 10;
-await taskSheet.Update(firstTask);
+// Change a ToDo
+toDo.Priority = 10;
+await sheet.Update(toDo);
 
 // Delete a task
-await taskSheet.Delete(firstTask);
+await sheet.Delete(toDo);
 
 // Create a task
-await taskSheet.Create(new Task
+await sheet.Create(new ToDo
 {
     Priority = 1,
     Name = "Build an app",
