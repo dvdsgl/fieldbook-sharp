@@ -34,7 +34,7 @@ var book = new Book("book id", "api key name", "api key");
 var sheet = book.GetSheet<ToDo>();
 ```
 
-### Step 4: Use the sheet to query, create, update, and delete
+### Step 4: Use the sheet to query, create, update, and delete ToDos
 
 ```csharp
 // List all todos
