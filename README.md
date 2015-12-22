@@ -46,7 +46,7 @@ var someTodos = await sheet.List(offset: 5, limit: 25);
 // Get todo by Id
 ToDo todo = await sheet.Get(0);
 
-// Or get a todo this hipster way via indexer
+// Or get a todo the hipster way via indexer
 var hipsterTodo = await sheet[42];
 
 // Change a todo
