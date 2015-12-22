@@ -38,19 +38,19 @@ var sheet = book.GetSheet<ToDo>();
 
 ```csharp
 // List all tasks
-List<ToDo> allToDos = await sheet.List();
+List<ToDo> allTodos = await sheet.List();
 
-// Get ToDo by Id
-ToDo toDo = await sheet.Get(0);
+// Get todo by Id
+ToDo todo = await sheet.Get(0);
 
-// Change a ToDo
-toDo.Priority = 10;
-await sheet.Update(toDo);
+// Change a todo
+todo.Priority = 10;
+await sheet.Update(todo);
 
-// Delete a task
-await sheet.Delete(toDo);
+// Delete a todo
+await sheet.Delete(todo);
 
-// Create a task
+// Create a todo
 await sheet.Create(new ToDo
 {
     Priority = 1,
