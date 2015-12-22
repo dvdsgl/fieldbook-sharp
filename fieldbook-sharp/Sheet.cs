@@ -57,19 +57,19 @@ namespace FieldBook
 		// Fielbook doesn't support bools yet so we convert them to string
 		class BoolToStringConverted : JsonConverter
 		{
-			public override void WriteJson (JsonWriter writer, object value, JsonSerializer serializer)
+			public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 			{
 				var asString = (bool)value ? "true" : "false";
 				var token = Newtonsoft.Json.Linq.JToken.FromObject(asString);
 				token.WriteTo(writer);
 			}
 
-			public override object ReadJson (JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+			public override object ReadJson(JsonReader reader, Type typ, object existingValue, JsonSerializer serializer)
 			{
-				throw new NotImplementedException ();
+				throw new NotImplementedException();
 			}
 
-			public override bool CanConvert (Type objectType) => objectType == typeof(bool);
+			public override bool CanConvert(Type typ) => typ == typeof(bool);
 		}
 
         class PropertyNamesContractResolver : CamelCasePropertyNamesContractResolver
