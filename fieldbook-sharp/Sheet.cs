@@ -16,11 +16,22 @@ namespace FieldBook
         string Name { get; }
         HttpClient Client { get; }
 
-        internal Sheet(string name, HttpClient client)
+        internal Sheet(HttpClient client, string name = null)
         {
-            Name = name;
+			Name = name ?? InferredName;
             Client = client;
         }
+
+		string InferredName
+		{
+			get
+			{
+				var name = typeof(T).Name.ToLower();
+				return name.EndsWith("y")
+					? $"{name.Substring(0, name.Length - 1)}ies"
+					: $"{name}s";
+			}
+		}
 
         public async Task<List<T>> List(int offset, int limit)
         {

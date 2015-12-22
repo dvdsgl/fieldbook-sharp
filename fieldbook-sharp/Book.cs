@@ -25,21 +25,7 @@ namespace FieldBook
             Client = CreateClient(bookId, new Credentials { User = user, Key = key });
         }
 
-        public Sheet<T> GetSheet<T>(string name = null) where T : IRow => new Sheet<T>(name ?? InferTableName<T>(), Client);
-
-        string InferTableName<T>()
-        {
-            var name = typeof(T).Name.ToLower();
-
-            if (name.EndsWith("y"))
-            {
-                return $"{name.Substring(0, name.Length - 1)}ies";
-            }
-            else
-            {
-                return $"{name}s";
-            }
-        }
+        public Sheet<T> GetSheet<T>(string name = null) where T : IRow => new Sheet<T>(Client, name);
 
         HttpClient CreateClient(string bookId, Credentials credentials = null)
         {
