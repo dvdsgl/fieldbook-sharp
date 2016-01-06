@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>fieldbook-sharp</id>
-    <version>0.0.7</version>
-    <title>FieldBook Client</title>
+    <version>0.1.0</version>
+    <title>FieldBook</title>
     <authors>David Siegel</authors>
     <owners>David Siegel</owners>
     <projectUrl>https://github.com/dvdsgl/fieldbook-sharp</projectUrl>

@@ -60,7 +60,7 @@ await sheet.Update(todo, new { Priority = todo.Priority });
 await sheet.Delete(todo);
 
 // Create a todo
-await sheet.Create(new ToDo
+var created = await sheet.Create(new ToDo
 {
     Priority = 1,
     Name = "Build an app",

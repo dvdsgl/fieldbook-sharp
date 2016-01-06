@@ -126,10 +126,15 @@ namespace FieldBook
 
         HttpContent ToJsonContent(object record) => new StringContent(ToJson(record), Encoding.UTF8, "application/json");
 
-        public async Task Create(T record)
+		public async Task<T> Create(T record)
         {
             var response = await Client.PostAsync(Name, ToJsonContent(record));
-            response.EnsureSuccessStatusCode();
+			response.EnsureSuccessStatusCode();
+
+			var content = response.Content as StreamContent;
+			var json = await content.ReadAsStringAsync();
+			var created = JsonConvert.DeserializeObject<T>(json);
+			return created;
         }
 
         public Task Update(T record, object fields = null) => Update(record.Id, fields ?? record);
