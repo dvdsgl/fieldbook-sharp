@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>fieldbook-sharp</id>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <title>FieldBook</title>
     <authors>David Siegel</authors>
     <owners>David Siegel</owners>
@@ -10,13 +10,13 @@
     <licenseUrl>https://github.com/dvdsgl/fieldbook-sharp/blob/master/License.md</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      FieldBook client library for .NET
+      FieldBook client for .NET
     </description>
     <releaseNotes>Early release.</releaseNotes>
-    <copyright>Copyright 2015</copyright>
+    <copyright>Copyright 2016</copyright>
     <dependencies>
-        <dependency id="Microsoft.Net.Http" version="2.2.0" />
-        <dependency id="Newtonsoft.Json" version="7.0.0" />
+        <dependency id="Microsoft.Net.Http" version="[2.2.0,)" />
+        <dependency id="Newtonsoft.Json" version="[7.0.0,)" />
     </dependencies>
   </metadata>
   <files>
